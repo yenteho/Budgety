@@ -89,9 +89,9 @@ var UIController = (function(){
                 html = '<div class="item clearfix" id="expense-%id%""><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
             }
             // 2. Replace the Placeholder text with some actual data
-            newHTML = html.replace('%id%', obg.id);
-            newHTML = newHTML.replace('%description%', obg.description);
-            newHTML = newHTML.replace('%value%', obg.value);
+            newHTML = html.replace('%id%', obj.id);
+            newHTML = newHTML.replace('%description%', obj.description);
+            newHTML = newHTML.replace('%value%', obj.value);
             // 3. Insert the HTML into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHTML);
 
@@ -123,6 +123,7 @@ var controller = (function(budgetCtrl,UICtrl){
         // 2. Add the item to the budeget controller
         newItem = budgetController.addItem(input.type, input.description, input.value);
         // 3. add the item to the UI
+        UICtrl.addListItem(newItem, input.type);
         // 4. Calculate the budget
         // 5. Display the budget on the UI
     }
